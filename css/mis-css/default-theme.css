@@ -1,0 +1,269 @@
+
+/*index.html*/
+
+body {
+	background-color: #222;
+	color: white;
+	font-family: 'Sarala', sans-serif;
+}
+
+h1{
+	font-family: 'Stardos Stencil', "Bauhaus 93";
+	font-weight: bold;
+}
+
+h2{
+	font-family: 'Comfortaa','Berlin Sans FB';
+	font-weight: bold;
+}
+
+p{
+	font-family: 'Sarala', sans-serif;
+}
+
+#barra-principal {
+	position: relative;
+	margin-bottom:0px;
+	left: 0;
+	right: 0;
+}
+
+.jumbotron {
+	padding-top: 25px;
+	background-color: #3a3838;
+	color:white;
+}
+
+#icono-principal{
+	position: relative; 
+	bottom: 5px;
+}
+
+
+.informacion h2, #informacion-boton{ 
+	text-align: center;
+	align-items: center;
+}
+
+
+#footer{
+	margin-top: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #393840;
+}
+
+
+#footer-links{
+	list-style-type: none; 
+	padding-left: 0px;
+	margin-left: auto;
+}
+
+
+#footer-copyright{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: hsla(249, 4%, 21%, 0.8);
+}
+
+
+/*tabla-periodica.html*/
+
+	body{
+		counter-reset: elementos;
+	}
+	
+	.tabla-periodica{
+		/*vw: centesima parte del ancho del viewport
+		  vh: centesima parte de la altura del viewport*/
+		margin: 3vw;
+		/*height: 458px;
+		width: 1134px;*/
+		display: grid;
+		padding-left: 0;
+		grid-gap: 3px;
+	}
+
+	/* Pongo contenido extra para que abarque espacio entre las ultimas 2 filas y las primeras 3 columnas*/
+
+
+	.tabla-periodica>li{
+		border: 1px solid red;
+		/* display: flex para sacar los numeros de la lista y acomodar el contenido */
+		display: flex;
+
+		/*Para desplazar los numeros del contador hacia abajo coloco los "li" en posicion relative y luego en cada numero lo selecciono
+		en absolute para que se desplaze siguiendo el flujo de su elemento padre (que esta en relative)*/
+		position: relative;
+		height: 4.5vw;
+		justify-content: center;
+  		align-items: center;
+  		border-radius: 3px;
+	}
+
+	/* para los indicadores de "selectores extra" no marco los numeros de elemento */
+	.tabla-periodica>li:not(.elementos-extra):before{
+		counter-increment: elementos; 
+  		content: counter(elementos);
+  		font-size: 10px;
+  		/* Defino varias sombras para que se vean los numeros, 1 para cada sentido de los ejes*/
+  		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  		position: absolute;
+  		bottom: 0px;
+  		left: 0px;
+	}
+
+	#helio{
+		grid-column-start: 18;
+	}
+
+	#boro, #aluminio{
+		grid-column-start: 13;
+	}
+
+	#lantano, #actinio{
+		grid-column-start: 4;
+	}
+
+	.no-metales{
+		background-color: #4286f4;
+	}
+
+	.gases-nobles{
+		background-color: #9261f3;
+	}
+
+	.alcalinos{
+		background-color: #f94f75;
+	}
+
+	.alcalinoterreos{
+		background-color: #eda650;
+	}
+
+	.metales-de-transicion{
+		background-color: #ffe359;
+	}
+
+	.metales-del-bloque-p{
+		background-color: #1ad82d;
+	}
+
+	.metaloides{
+		background-color: #80adf7;
+	}
+
+	.halogenos{
+		background-color: #a282e2;
+	}
+
+	.lantanidos{
+		background-color: #fac6ff;
+	}
+
+	.actinidos{
+		background-color: #f3a7f9;
+	}
+
+	.tabla-periodica > li:nth-child(n+58):nth-last-child(n+49) {
+		grid-row-start: 8;
+	}
+
+	.tabla-periodica > li:nth-child(n+91):nth-last-child(n+16) {
+		grid-row-start: 9;
+	}
+
+	@media only screen and (min-width: 1200px){
+		.tabla-periodica:before{
+			display:block;
+			content: '';
+			grid-row: 8/10;
+			grid-column: 1/4;
+		}
+	}
+
+	@media only screen and (max-width: 1200px){
+		#helio, #boro, #aluminio, #lantano, #actinio{
+			grid-column-start: auto;
+		}
+
+		.tabla-periodica{
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		.tabla-periodica>li{
+			height:auto;
+		}
+
+		.tabla-periodica> li:nth-child(n+58):nth-last-child(n+49) {
+  			grid-row-start: auto !important;
+		}
+
+		.tabla-periodica > li:nth-child(n+91):nth-last-child(n+16) {
+		    grid-row-start: auto !important;
+		 }
+
+	}
+
+	@media only screen and (max-width: 720px){
+		.tabla-periodica{
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media only screen and (max-width: 540px){
+		.tabla-periodica{
+			grid-template-columns: 1fr;
+		}
+
+		.tabla-periodica>li:after{
+			position: relative;
+			content: attr(title);
+		}
+	}
+
+	.advertencia{
+		margin: 0 20px 20px;
+		border-style: none;
+	}
+
+/* posts.html */
+
+.parallax{
+	/*Hay que fijar una altura especifica*/
+	height: 600px;
+
+	/*Efecto Parallax*/
+
+	/* "background-attachment:fixed" hace que la imagen quede fija al desplazarse por la pagina*/
+	background-attachment: fixed;
+
+	/* "background-position: center" centra la imagen */
+    background-position: center;
+
+    /* "background-repeat: no-repeat" evita que la imagen se repita*/
+    background-repeat: no-repeat;
+
+    /* "background-size: cover;" reajusta la imagen para que quede en todo el contenedor*/
+    background-size: cover;
+
+}
+
+.nota{
+	margin-bottom: 20px;
+}
+
+
+/* contacto.html*/
+
+#contacto li{
+	color: black;
+	font-size: 18px;
+	background-color: white;
+	border: 1px solid black;
+}
+
+.list-group-item span:hover{
+	color: gray;
+}
