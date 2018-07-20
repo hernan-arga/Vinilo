@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Vinilo! - Contacto</title>
+	<title>Vinilo! - Login</title>
 
 	<!--CSS Bootstrap-->
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
@@ -53,28 +53,63 @@
 	    </div>
 	</nav>
 
-	<!--Aca va todo lo de contacto-->
 
-	<!--Le saco el margen del body 40 px para que no se vea-->
 	<div class="jumbotron" style="margin-bottom:-40px;">
 		<div class="container-fluid">
-			<h1>Contactanos</h1>
+			<h1>Iniciar Sesion</h1>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua.</p>
 		</div>
-
 		<br>
-
-		<div class="container">
-			<ul class="list-group" id="contacto">
-			  <li class="list-group-item"><i class="fas fa-phone" title="Telefono" style="color: #2388af;"></i> - <span>43687902</span></li>
-			  <li class="list-group-item"><i class="fas fa-at" title="Correo electronico" style="color: black;"></i> - <span>abc_2018@hotmail.com</span></li>
-			  <li class="list-group-item"><i class="fab fa-facebook-f" title="Facebook" style="color: #3b5998;"></i> - <span>"Vinilo!"</span></li>
-			  <li class="list-group-item"><i class="fab fa-twitter" title="Twitter" style="color: #1dcaff"></i> - <span>"Vinilo!"</span></li>
-			</ul>
-		</div>
-
 	</div>
+
+	<!-- Formulario de Iniciar Sesion -->
+	<br>
+	<form method="post" name="datos_usuario" id="datos_usuario">
+		<div class="row" style="margin: 0px;">
+			<div class="container col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2" style="padding-top: 60px;">
+				<div class="panel panel-primary">
+					<div class="panel-heading"><span class="fas fa-sign-in-alt"></span> Iniciar Sesion</div>
+					<div class="panel-body" style="padding-top: 30px">
+						<div class="input-group" style="margin-bottom: 25px">
+							<span class="input-group-addon"><i class="fa fa-user-circle"></i></span><input type="form-group" name="nombre_usuario" class="form-control" placeholder="Usuario o correo electronico">
+							</div>
+						<div class="input-group" style="margin-bottom: 25px">
+							<span class="input-group-addon"><i class="fa fa-key"></i></span><input type="form-group" name="edad_usuario"class="form-control" placeholder="Contraseña">
+						</div>
+						<div class="input-group">
+							<div class="checkbox">
+								<!-- Meter "Recordar usuario" aca -->
+							</div>
+						</div>
+						<div style="margin-bottom: 10px">
+							<button name="enviando" type="submit" class="btn-success btn-sm">iniciar sesion</button>
+							<button type="button" class="btn-primary btn-sm">iniciar sesion con Facebook</button>
+						</div>
+						<div style="border-top: 1px solid black; color: black; padding-top: 15px">Si no tenes una cuenta te podes registrar <a href="#">aca</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<?php
+		if(isset($_POST["enviando"])){
+
+			$usuario = $_POST["nombre_usuario"];
+			$edad = $_POST["edad_usuario"];
+
+			if($usuario == "Juan" && $edad >= 18){
+				echo "<p class=\"validado\">Puedes entrar</p>";
+			}
+
+			else{
+				echo "<p class=\"no_validado\">No puedes entrar</p>";
+			}
+		}
+
+
+	?>
 
 	<!-- Footer -->
 	<div id="footer">
